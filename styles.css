@@ -36,10 +36,21 @@ body {
 }
 
 .sky {
-  background-image: url("Day\ Sky.png");
+  background-image: url("./images/Day\ Sky\ long.png");
   width: 500px;
   height: 580px;
   position: absolute;
+}
+
+.sky-moving {
+  background-image: url("./images/Day\ Sky\ long.png");
+  width: 500px;
+  height: 580px;
+  position: absolute;
+  background-repeat: repeat-x;
+  animation: slideleft 300s infinite linear;
+  -webkit-animation: slideleft 1500s infinite linear;
+  /* width: 100%; */
 }
 
 .ground {
@@ -52,28 +63,49 @@ body {
 }
 
 .bird {
-  background-image: url("flappy-bird.png");
+  background-image: url("./images/hassan-border.png");
   position: absolute;
   width: 60px;
-  height: 45px;
+  height: 62px;
   left: 220px;
   bottom: 100px;
 }
 
+/* Fork and knife */
+
 .obstacle {
-  background-image: url("flappybird-pipe.png");
+  background-image: url("./images/flappybird-fork.png");
   width: 60px;
   height: 300px;
   position: absolute;
 }
 
 .topObstacle {
+  background-image: url("./images/flappybird-knife.png");
+  transform: rotate(180deg);
+  width: 60px;
+  height: 300px;
+  position: absolute;
+}
+
+/* Pipes */
+
+.obstaclePipe {
+  background-image: url("flappybird-pipe.png");
+  width: 60px;
+  height: 300px;
+  position: absolute;
+}
+
+.topObstaclePipe {
   background-image: url("flappybird-pipe.png");
   transform: rotate(180deg);
   width: 60px;
   height: 300px;
   position: absolute;
 }
+
+/* Make it move to the right */
 
 @keyframes slideright {
   from {
@@ -90,6 +122,26 @@ body {
   }
   to {
     background-position: 0%;
+  }
+}
+
+/* Make it move to the left */
+
+@keyframes slideleft {
+  from {
+    background-position: 0%;
+  }
+  to {
+    background-position: 10000%;
+  }
+}
+
+@-webkit-keyframes slideleft {
+  from {
+    background-position: 0%;
+  }
+  to {
+    background-position: 10000%;
   }
 }
 

@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const bird = document.querySelector(".bird");
   const gameDisplay = document.querySelector(".game-container");
   const ground = document.querySelector(".ground-moving");
+  const sky = document.querySelector(".sky-moving");
 
   let birdLeft = 220;
   let birdBottom = 100;
@@ -80,5 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.removeEventListener("keyup", control);
     ground.classList.add("ground");
     ground.classList.remove("ground-moving");
+    sky.classList.add("sky");
+    sky.classList.remove("sky-moving");
   }
 });
