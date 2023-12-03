@@ -2,6 +2,10 @@ body {
   display: flex;
 }
 
+.button-container {
+  z-index: +2;
+}
+
 .game-container {
   width: 500px;
   height: 730px;
@@ -36,14 +40,14 @@ body {
 }
 
 .sky {
-  background-image: url("./images/Day\ Sky\ long.png");
+  background-image: url("Day\ Sky.png");
   width: 500px;
   height: 580px;
   position: absolute;
 }
 
 .sky-moving {
-  background-image: url("./images/Day\ Sky\ long.png");
+  background-image: url("Day\ Sky.png");
   width: 500px;
   height: 580px;
   position: absolute;
@@ -62,11 +66,20 @@ body {
   z-index: +1;
 }
 
-.bird {
-  background-image: url("./images/hassan-border.png");
+.birdHassan {
+  background-image: url("./images/bird2.png");
   position: absolute;
   width: 60px;
   height: 62px;
+  left: 220px;
+  bottom: 100px;
+}
+
+.bird {
+  background-image: url("./images/bird1.png");
+  position: absolute;
+  width: 60px;
+  height: 45px;
   left: 220px;
   bottom: 100px;
 }

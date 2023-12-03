@@ -1,8 +1,27 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const bird = document.querySelector(".bird");
+  const bird = document.querySelector("#bird");
   const gameDisplay = document.querySelector(".game-container");
   const ground = document.querySelector(".ground-moving");
   const sky = document.querySelector(".sky-moving");
+
+  // // Change style of the bird with the buttons
+  const birdButton1 = document.getElementById("birdButton1");
+  const birdButton2 = document.getElementById("birdButton2");
+  const birdButton3 = document.getElementById("birdButton3");
+
+  function changeDivClass() {
+    // Toggle between different classes when the button is clicked
+    if (bird.classList.contains("birdHassan")) {
+      bird.classList.remove("birdHassan");
+      bird.classList.add("bird");
+    } else {
+      bird.classList.remove("bird");
+      bird.classList.add("birdHassan");
+    }
+  }
+
+  // Add an event listener to the button
+  birdButton1.addEventListener("click", changeDivClass);
 
   // How to randomize the obstacles. Array of CSS classes
   let classNamesTop = [
