@@ -4,6 +4,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const ground = document.querySelector(".ground-moving");
   const sky = document.querySelector(".sky-moving");
 
+  // How to randomize the obstacles. Array of CSS classes
+  let classNamesTop = ["topObstacle", "topObstaclePipe"];
+  let classNamesBottom = ["obstacle", "obstaclePipe"];
+  let randomIndexTop = Math.floor(Math.random() * classNamesTop.length);
+  let randomIndexBottom = Math.floor(Math.random() * classNamesBottom.length);
+
   let birdLeft = 220;
   let birdBottom = 100;
   let gravity = 2;
@@ -37,8 +43,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const obstacle = document.createElement("div");
     const topObstacle = document.createElement("div");
     if (!isGameOver) {
-      obstacle.classList.add("obstacle");
-      topObstacle.classList.add("topObstacle");
+      obstacle.classList.add(classNamesBottom[randomIndexBottom]);
+      topObstacle.classList.add(classNamesTop[randomIndexTop]);
+      console.log(randomIndexTop, classNamesTop[randomIndexTop]);
+      console.log(randomIndexBottom, classNamesBottom[randomIndexBottom]);
     }
     gameDisplay.appendChild(obstacle);
     gameDisplay.appendChild(topObstacle);
