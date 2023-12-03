@@ -5,10 +5,32 @@ document.addEventListener("DOMContentLoaded", () => {
   const sky = document.querySelector(".sky-moving");
 
   // How to randomize the obstacles. Array of CSS classes
-  let classNamesTop = ["topObstacle", "topObstaclePipe"];
-  let classNamesBottom = ["obstacle", "obstaclePipe"];
-  let randomIndexTop = Math.floor(Math.random() * classNamesTop.length);
-  let randomIndexBottom = Math.floor(Math.random() * classNamesBottom.length);
+  let classNamesTop = [
+    "topObstacleFork",
+    "topObstacleKnife",
+    "topObstaclePipe",
+    "topObstacleSalmon",
+  ];
+  let classNamesBottom = [
+    "obstacleFork",
+    "obstacleKnife",
+    "obstaclePipe",
+    "obstacleCoffee",
+    "obstacleKhadija",
+    "obstacleSalmon",
+  ];
+
+  function getRandomClassTop(classNames) {
+    const randomIndexTop = Math.floor(Math.random() * classNamesTop.length);
+    return classNamesTop[randomIndexTop];
+  }
+
+  function getRandomClassBottom(classNames) {
+    const randomIndexBottom = Math.floor(
+      Math.random() * classNamesBottom.length
+    );
+    return classNamesBottom[randomIndexBottom];
+  }
 
   let birdLeft = 220;
   let birdBottom = 100;
@@ -42,11 +64,15 @@ document.addEventListener("DOMContentLoaded", () => {
     let obstacleBottom = randomHeight;
     const obstacle = document.createElement("div");
     const topObstacle = document.createElement("div");
+    const randomClassTop = getRandomClassTop(classNamesTop);
+    const randomClassBottom = getRandomClassBottom(classNamesBottom);
     if (!isGameOver) {
-      obstacle.classList.add(classNamesBottom[randomIndexBottom]);
-      topObstacle.classList.add(classNamesTop[randomIndexTop]);
-      console.log(randomIndexTop, classNamesTop[randomIndexTop]);
-      console.log(randomIndexBottom, classNamesBottom[randomIndexBottom]);
+      obstacle.classList.add(randomClassBottom);
+      topObstacle.classList.add(randomClassTop);
+      // obstacle.classList.add(classNamesBottom[randomIndexBottom]);
+      // topObstacle.classList.add(classNamesTop[randomIndexTop]);
+      // console.log(randomIndexTop, classNamesTop[randomIndexTop]);
+      // console.log(randomIndexBottom, classNamesBottom[randomIndexBottom]);
     }
     gameDisplay.appendChild(obstacle);
     gameDisplay.appendChild(topObstacle);

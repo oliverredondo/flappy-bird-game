@@ -73,17 +73,50 @@ body {
 
 /* Fork and knife */
 
-.obstacle {
+.obstacleFork {
   background-image: url("./images/flappybird-fork.png");
   width: 60px;
   height: 300px;
   position: absolute;
 }
 
-.topObstacle {
+.topObstacleFork {
+  background-image: url("./images/flappybird-fork.png");
+  transform: rotate(180deg);
+  width: 60px;
+  height: 300px;
+  position: absolute;
+}
+
+.obstacleKnife {
+  background-image: url("./images/flappybird-knife.png");
+  width: 60px;
+  height: 300px;
+  position: absolute;
+}
+
+.topObstacleKnife {
   background-image: url("./images/flappybird-knife.png");
   transform: rotate(180deg);
   width: 60px;
+  height: 300px;
+  position: absolute;
+}
+
+/* Coffee */
+
+.obstacleCoffee {
+  background-image: url("./images/coffee.png");
+  width: 200px;
+  height: 300px;
+  position: absolute;
+}
+
+/* Khadija */
+
+.obstacleKhadija {
+  background-image: url("./images/khadija.png");
+  width: 200px;
   height: 300px;
   position: absolute;
 }
@@ -99,6 +132,23 @@ body {
 
 .topObstaclePipe {
   background-image: url("flappybird-pipe.png");
+  transform: rotate(180deg);
+  width: 60px;
+  height: 300px;
+  position: absolute;
+}
+
+/* Salmon */
+
+.obstacleSalmon {
+  background-image: url("./images/salmon.png");
+  width: 60px;
+  height: 300px;
+  position: absolute;
+}
+
+.topObstacleSalmon {
+  background-image: url("./images/salmon.png");
   transform: rotate(180deg);
   width: 60px;
   height: 300px;
