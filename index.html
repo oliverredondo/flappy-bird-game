@@ -5,23 +5,33 @@
     <title>Flappy Bird</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
+
   <body>
-    <div class="border-left"></div>
-    <div class="game-container">
-      <div class="border-top"></div>
-      <div class="sky-moving">
-        <div id="bird" class="bird"></div>
+    <nav>
+      <a href="/about">The coolest about page on the interwebz</a>
+    </nav>
+
+    <div class="container">
+      <div class="game">
+        <div class="button-container">
+          <button id="birdButton1">Bird 1</button>
+          <button id="birdButton2">Bird 2</button>
+          <button id="birdButton3">Bird 3</button>
+        </div>
+
+        <!-- <div class="border-left"></div> -->
+        <!-- <div class="border-top"></div> -->
+        <div class="sky-moving">
+          <div id="bird" class="bird"></div>
+        </div>
+
+        <div class="ground-container">
+          <div class="ground-moving"></div>
+        </div>
       </div>
+      <!-- <div class="border-right"></div> -->
     </div>
-    <div class="ground-container">
-      <div class="ground-moving"></div>
-    </div>
-    <div class="border-right"></div>
-    <div class="button-container">
-      <button id="birdButton1">Bird 1</button>
-      <button id="birdButton2">Bird 2</button>
-      <button id="birdButton3">Bird 3</button>
-    </div>
+
     <script src="script.js" charset="utf-8"></script>
   </body>
 </html>

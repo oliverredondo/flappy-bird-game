@@ -1,34 +1,61 @@
 body {
   display: flex;
+  margin: 0;
+}
+
+.container {
+  /* display: block;
+  width: 1024px;
+  height: 640px;
+  position: absolute;
+  left: 50%;
+  top: 52.5%;
+  transform: translate(-50%, -50%);
+  overflow: hidden; */
+  display: block;
+  width: 1024px;
+  height: 768px;
+  position: absolute;
+  left: 50%;
+  top: 55%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+  color: salm;
+}
+
+.game {
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
 .button-container {
-  z-index: +2;
-}
-
-.game-container {
-  width: 500px;
-  height: 730px;
   position: absolute;
-  left: 80px;
+  z-index: 1;
 }
 
-.border-left {
+nav {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+/* .border-left {
   width: 80px;
-  height: 790px;
+  height: 768px;
   position: absolute;
   background-color: white;
   z-index: +2;
-}
+} */
 
-.border-right {
+/* .border-right {
   width: 80px;
-  height: 790px;
+  height: 768px;
   position: absolute;
   background-color: white;
   z-index: +2;
-  left: 580px;
-}
+  left: 942px;
+} */
 
 .border-top {
   width: 660px;
@@ -41,29 +68,23 @@ body {
 
 .sky {
   background-image: url("Day\ Sky.png");
-  width: 500px;
-  height: 580px;
+  width: 100%;
+  height: 640px;
   position: absolute;
+  background-repeat: repeat;
+  background-position: 0%;
+  background-size: cover;
 }
 
 .sky-moving {
   background-image: url("Day\ Sky.png");
-  width: 500px;
-  height: 580px;
+  width: 100%;
+  height: 640px;
   position: absolute;
-  background-repeat: repeat-x;
-  animation: slideleft 300s infinite linear;
+  animation: slideleft 1500s infinite linear;
   -webkit-animation: slideleft 1500s infinite linear;
+  background-size: cover;
   /* width: 100%; */
-}
-
-.ground {
-  background-image: url("bottom-background.png");
-  width: 500px;
-  height: 150px;
-  position: absolute;
-  top: 580px;
-  z-index: +1;
 }
 
 .birdHassan {
@@ -77,6 +98,24 @@ body {
 
 .bird {
   background-image: url("./images/bird1.png");
+  position: absolute;
+  width: 60px;
+  height: 45px;
+  left: 220px;
+  bottom: 100px;
+}
+
+.birdHassan {
+  background-image: url("./images/bird2.png");
+  position: absolute;
+  width: 60px;
+  height: 62px;
+  left: 220px;
+  bottom: 100px;
+}
+
+.birdPetra {
+  background-image: url("./images/bird3.png");
   position: absolute;
   width: 60px;
   height: 45px;
@@ -130,6 +169,13 @@ body {
 .obstacleKhadija {
   background-image: url("./images/khadija.png");
   width: 200px;
+  height: 300px;
+  position: absolute;
+}
+
+.obstacleEskilCool {
+  background-image: url("./images/eskilCool.png");
+  width: 190px;
   height: 300px;
   position: absolute;
 }
@@ -208,21 +254,29 @@ body {
   }
 }
 
-.ground-container {
+.ground {
+  background-image: url("bottom-background.png");
+  width: 100%;
   height: 150px;
-  width: 580px;
-  left: 80px;
   position: absolute;
+  z-index: 1;
+}
+
+.ground-container {
+  width: 100%;
+  height: 150px;
+  position: absolute;
+  bottom: 0;
 }
 
 .ground-moving {
-  position: absolute;
-  top: 580px;
+  width: 100%;
   height: 150px;
+  position: absolute;
+  bottom: 0;
   background-image: url("bottom-background.png");
   background-repeat: repeat-x;
   animation: slideright 100s infinite linear;
   -webkit-animation: slideright 100s infinite linear;
-  width: 100%;
   z-index: +1;
 }

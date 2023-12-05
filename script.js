@@ -1,27 +1,48 @@
 document.addEventListener("DOMContentLoaded", () => {
   const bird = document.querySelector("#bird");
-  const gameDisplay = document.querySelector(".game-container");
+  const gameDisplay = document.querySelector(".game");
   const ground = document.querySelector(".ground-moving");
   const sky = document.querySelector(".sky-moving");
 
-  // // Change style of the bird with the buttons
+  // Change style of the bird with the buttons
   const birdButton1 = document.getElementById("birdButton1");
   const birdButton2 = document.getElementById("birdButton2");
   const birdButton3 = document.getElementById("birdButton3");
 
-  function changeDivClass() {
-    // Toggle between different classes when the button is clicked
+  function changeDivClass1() {
     if (bird.classList.contains("birdHassan")) {
       bird.classList.remove("birdHassan");
       bird.classList.add("bird");
     } else {
+      bird.classList.remove("birdPetra");
+      bird.classList.add("bird");
+    }
+  }
+
+  function changeDivClass2() {
+    if (bird.classList.contains("bird")) {
       bird.classList.remove("bird");
+      bird.classList.add("birdHassan");
+    } else {
+      bird.classList.remove("birdPetra");
       bird.classList.add("birdHassan");
     }
   }
 
+  function changeDivClass3() {
+    if (bird.classList.contains("bird")) {
+      bird.classList.remove("bird");
+      bird.classList.add("birdPetra");
+    } else {
+      bird.classList.remove("birdHassan");
+      bird.classList.add("birdPetra");
+    }
+  }
+
   // Add an event listener to the button
-  birdButton1.addEventListener("click", changeDivClass);
+  birdButton1.addEventListener("click", changeDivClass1);
+  birdButton2.addEventListener("click", changeDivClass2);
+  birdButton3.addEventListener("click", changeDivClass3);
 
   // How to randomize the obstacles. Array of CSS classes
   let classNamesTop = [
@@ -36,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "obstaclePipe",
     "obstacleCoffee",
     "obstacleKhadija",
-    "obstacleSalmon",
+    "obstacleSalmon", "obstacleEskilCool"
   ];
 
   function getRandomClassTop(classNames) {
@@ -55,7 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let birdBottom = 100;
   let gravity = 2;
   let isGameOver = false;
-  let gap = 450;
+  let gap = 475;
 
   function startGame() {
     birdBottom -= gravity;
@@ -75,11 +96,15 @@ document.addEventListener("DOMContentLoaded", () => {
     bird.style.bottom = birdBottom + "px";
     console.log(birdBottom);
   }
+
   document.addEventListener("keyup", control);
 
+  // Array to store timer IDs
+  let obstacleTimers = [];
+
   function generateObstacle() {
-    let obstacleLeft = 500;
-    let randomHeight = Math.random() * 60;
+    let obstacleLeft = 830;
+    let randomHeight = Math.random() * 150;
     let obstacleBottom = randomHeight;
     const obstacle = document.createElement("div");
     const topObstacle = document.createElement("div");
@@ -88,10 +113,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!isGameOver) {
       obstacle.classList.add(randomClassBottom);
       topObstacle.classList.add(randomClassTop);
-      // obstacle.classList.add(classNamesBottom[randomIndexBottom]);
-      // topObstacle.classList.add(classNamesTop[randomIndexTop]);
-      // console.log(randomIndexTop, classNamesTop[randomIndexTop]);
-      // console.log(randomIndexBottom, classNamesBottom[randomIndexBottom]);
     }
     gameDisplay.appendChild(obstacle);
     gameDisplay.appendChild(topObstacle);
@@ -99,13 +120,18 @@ document.addEventListener("DOMContentLoaded", () => {
     topObstacle.style.left = obstacleLeft + "px";
     obstacle.style.bottom = obstacleBottom + "px";
     topObstacle.style.bottom = obstacleBottom + gap + "px";
+    
+    let timerId = setInterval(moveObstacle, 20);
+
+    // Push the timerId into the array
+    obstacleTimers.push(timerId);
 
     function moveObstacle() {
       obstacleLeft -= 2;
       obstacle.style.left = obstacleLeft + "px";
       topObstacle.style.left = obstacleLeft + "px";
 
-      if (obstacleLeft === -60) {
+      if (obstacleLeft === -200) {
         clearInterval(timerId);
         gameDisplay.removeChild(obstacle);
         gameDisplay.removeChild(topObstacle);
@@ -122,14 +148,18 @@ document.addEventListener("DOMContentLoaded", () => {
         clearInterval(timerId);
       }
     }
-    let timerId = setInterval(moveObstacle, 20);
     if (!isGameOver) setTimeout(generateObstacle, 3000);
   }
   generateObstacle();
 
   function gameOver() {
+    // Clear all obstacle timers
+    obstacleTimers.forEach((timerId) => {
+      clearInterval(timerId);
+    });
+
     clearInterval(gameTimerId);
-    console.log("game over");
+    console.log("Game over");
     isGameOver = true;
     document.removeEventListener("keyup", control);
     ground.classList.add("ground");
