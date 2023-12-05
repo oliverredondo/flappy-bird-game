@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Initialize DOM elements
   const bird = document.querySelector("#bird");
   const gameDisplay = document.querySelector(".game");
   const ground = document.querySelector(".ground-moving");
@@ -57,7 +58,8 @@ document.addEventListener("DOMContentLoaded", () => {
     "obstaclePipe",
     "obstacleCoffee",
     "obstacleKhadija",
-    "obstacleSalmon", "obstacleEskilCool"
+    "obstacleSalmon",
+    "obstacleEskilCool",
   ];
 
   function getRandomClassTop(classNames) {
@@ -72,12 +74,14 @@ document.addEventListener("DOMContentLoaded", () => {
     return classNamesBottom[randomIndexBottom];
   }
 
+  // Global variable declarations
   let birdLeft = 220;
   let birdBottom = 100;
   let gravity = 2;
   let isGameOver = false;
   let gap = 475;
 
+  // Define startGame function
   function startGame() {
     birdBottom -= gravity;
     bird.style.bottom = birdBottom + "px";
@@ -102,6 +106,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // Array to store timer IDs
   let obstacleTimers = [];
 
+  // Generating new obstacles
+
   function generateObstacle() {
     let obstacleLeft = 830;
     let randomHeight = Math.random() * 150;
@@ -120,11 +126,13 @@ document.addEventListener("DOMContentLoaded", () => {
     topObstacle.style.left = obstacleLeft + "px";
     obstacle.style.bottom = obstacleBottom + "px";
     topObstacle.style.bottom = obstacleBottom + gap + "px";
-    
+
     let timerId = setInterval(moveObstacle, 20);
 
     // Push the timerId into the array
     obstacleTimers.push(timerId);
+
+    // Moving the obstacles
 
     function moveObstacle() {
       obstacleLeft -= 2;
